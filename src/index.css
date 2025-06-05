@@ -8,7 +8,9 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-  --color-bradesco: #cc092f;
+  --color-bco: #f0152d;
+  --color-bco-600: #b4082a;
+  --color-bco-700: #900624;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);

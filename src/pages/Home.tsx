@@ -2,13 +2,15 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { ArrowUpRight, Bank, QrCode } from "@phosphor-icons/react"
+import {Link} from "react-router-dom";
+import {toast} from "sonner";
 
 export default function Home() {
     // estados só para demo
     const [saldo] = useState(12345.67)
 
     return (
-        <section className="mx-auto w-full max-w-5xl px-4 py-6 space-y-6">
+        <section className="mx-auto w-full space-y-6">
             {/* bloco de saldo */}
             <div className="rounded-xl bg-gradient-to-r from-red-600 to-red-500 p-5 text-white shadow-lg">
                 <div className="flex items-center justify-between">
@@ -18,7 +20,7 @@ export default function Home() {
                             <strong className="text-3xl font-semibold">
                                 {saldo.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}
                             </strong>
-                            <ArrowUpRight size={20} weight="bold" className="translate-y-0.5 opacity-80" />
+                            <ArrowUpRight size={20} weight="bold" className="translate-y-1 opacity-80" />
                         </p>
                         <span className="text-[10px] opacity-70">atualizado há poucos segundos</span>
                     </div>
@@ -50,17 +52,22 @@ export default function Home() {
             </div>
 
             {/* ações rápidas */}
-            <div className="flex flex-col gap-4 sm:flex-row">
+            <div className="flex flex-col gap-4">
                 <Button asChild className="flex-1">
-                    <a href="/transferencia" className="flex items-center justify-center gap-2">
-                        <Bank size={18} weight="bold" /> Transferência
-                    </a>
+                    <Link to="/transferencia" className="flex items-center justify-center gap-2">
+                        <Bank weight="bold" /> Transferência
+                    </Link>
                 </Button>
                 <Button asChild variant="secondary" className="flex-1">
-                    <a href="/gerar-pix" className="flex items-center justify-center gap-2">
-                        <QrCode size={18} weight="bold" /> Gerar PIX
-                    </a>
+                    <Link to="/gerar-pix" className="flex items-center justify-center gap-2">
+                        <QrCode weight="bold" /> Gerar PIX
+                    </Link>
                 </Button>
+
+                <Button
+                    variant="destructive"
+                    className="flex-1"
+                    >Botão de Ação</Button>
             </div>
         </section>
     )

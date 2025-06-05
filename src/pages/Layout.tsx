@@ -2,6 +2,7 @@
 import { Link, Outlet } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import Header from "@/pages/Header.tsx";
+import {Toaster} from "@/components/ui/sonner.tsx";
 // import {Toaster} from "@/components/ui/sonner.tsx";
 
 export default function Layout() {
@@ -12,7 +13,7 @@ export default function Layout() {
 
 
             {/* miolo (rotas) */}
-            <main className="flex-1 max-w-5xl mx-auto py-8 px-6">
+            <main className="flex-1 max-w-5xl mx-auto px-6 py-8">
                 <Outlet />
             </main>
 
@@ -22,7 +23,7 @@ export default function Layout() {
                     © {new Date().getFullYear()} Mini Banco
                 </div>
             </footer>
-            {/*<Toaster position="top-right" richColors />*/}
+            <Toaster className="!top-20 sm:!top-20" />
         </div>
     )
 }

@@ -2,11 +2,12 @@
 import { Button } from "@/components/ui/button"
 import { Link } from "react-router-dom"
 
-export default function Header() {
+import React from "react";
+export default React.memo( function Header() {
     return (
         <header className="sticky top-0 z-50 h-16 border-b bg-white">
             <div className="mx-auto flex h-full max-w-5xl items-center justify-between px-4">
-                <h1 className="flex items-center gap-2 text-xl font-semibold text-bradesco">
+                <h1 className="flex items-center gap-2 text-xl font-semibold text-bco">
                     <img
                         src="/logo-bradesco-escudo-1024.png"
                         alt="Bradesco"
@@ -22,5 +23,5 @@ export default function Header() {
                 </nav>
             </div>
         </header>
-    )
-}
+    );
+});
