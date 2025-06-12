@@ -49,7 +49,7 @@ export default React.memo(function Header() {
                     className="flex items-center gap-2 text-xl font-semibold text-red-600 hover:scale-105 transition-transform duration-300"
                 >
                     <img
-                        src="/logo-bradesco-escudo-1024.png"
+                        src={import.meta.env.BASE_URL + "/logo-bradesco-escudo-1024.png"}
                         alt="Bradesco"
                         className="h-8 w-auto object-contain drop-shadow-sm"
                     />
