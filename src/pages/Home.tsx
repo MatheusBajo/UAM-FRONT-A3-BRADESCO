@@ -59,15 +59,11 @@ export default function Home() {
                     </Link>
                 </Button>
                 <Button asChild variant="secondary" className="flex-1">
-                    <Link to="/gerar-pix" className="flex items-center justify-center gap-2">
+                    <Link to="/pix" className="flex items-center justify-center gap-2">
                         <QrCode weight="bold" /> Gerar PIX
                     </Link>
                 </Button>
 
-                <Button
-                    variant="destructive"
-                    className="flex-1"
-                    >Botão de Ação</Button>
             </div>
         </section>
     )

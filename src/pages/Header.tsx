@@ -19,7 +19,7 @@ export default React.memo( function Header() {
                 <nav className="hidden gap-1 md:flex">
                     <Button asChild variant="ghost"><Link to="/">Início</Link></Button>
                     <Button asChild variant="ghost"><Link to="/transferencia">Transferência</Link></Button>
-                    <Button asChild variant="ghost"><Link to="/gerar-pix">Gerar PIX</Link></Button>
+                    <Button asChild variant="ghost"><Link to="/pix">Gerar PIX</Link></Button>
                 </nav>
             </div>
         </header>

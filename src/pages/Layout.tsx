@@ -23,7 +23,7 @@ export default function Layout() {
                     © {new Date().getFullYear()} Mini Banco
                 </div>
             </footer>
-            <Toaster className="!top-20 sm:!top-20" />
+            <Toaster className="" expand={true} />
         </div>
     )
 }
