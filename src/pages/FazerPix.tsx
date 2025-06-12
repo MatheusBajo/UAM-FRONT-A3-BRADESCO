@@ -1,18 +1,22 @@
-import { useState, useTransition, useEffect, useRef } from 'react';
-import { Label } from '@/components/ui/label';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
+import {useEffect, useRef, useState, useTransition} from 'react';
+import {Label} from '@/components/ui/label';
+import {Input} from '@/components/ui/input';
+import {Button} from '@/components/ui/button';
 import {
-    Drawer, DrawerTrigger, DrawerContent,
-    DrawerHeader, DrawerTitle, DrawerDescription,
-    DrawerFooter, DrawerClose,
+    Drawer,
+    DrawerClose,
+    DrawerContent,
+    DrawerDescription,
+    DrawerFooter,
+    DrawerHeader,
+    DrawerTitle,
+    DrawerTrigger,
 } from '@/components/ui/drawer';
-import { toast } from 'sonner';
-import { Warning, ShieldSlash, CircleNotch, Check, X } from '@phosphor-icons/react';
-import { Loader2 } from 'lucide-react';
-import { analisarTransacao } from '@/services/pixService';
-import type { AnaliseResponse, TransacaoRequest } from '@/types/pix';
-import { useGSAP } from '@gsap/react';
+import {toast} from 'sonner';
+import {Check, CircleNotch, ShieldSlash, Warning, X} from '@phosphor-icons/react';
+import {Loader2} from 'lucide-react';
+import type {AnaliseResponse, TransacaoRequest} from '@/types/pix';
+import {useGSAP} from '@gsap/react';
 import gsap from 'gsap';
 
 /* ---------- helpers ---------- */
@@ -78,7 +82,7 @@ export default function FazerPix() {
     const [errors, setErrors] = useState<Record<string, boolean>>({});
     const [analise, setAnalise] = useState<AnaliseResponse | null>(null);
     const [drawerOpen, setDrawer] = useState(false);
-    const [isPending, startTransition] = useTransition();
+    const [isPending] = useTransition();
     const [isDetectingType, setIsDetectingType] = useState(false);
 
     const formRef = useRef(null);
@@ -228,7 +232,7 @@ export default function FazerPix() {
                 </div>
                 <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-purple-400/20 via-transparent to-blue-400/20 pointer-events-none"></div>
 
-                <style jsx>{`
+                <style>{`
                     @keyframes header-entrance { 0% { transform: translateY(-20px) scale(0.95); opacity: 0; } 50% { transform: translateY(5px) scale(1.02); } 100% { transform: translateY(0) scale(1); opacity: 1; } }
                     @keyframes gradient-shift { 0%, 100% { background-position: 0% 50%; } 25% { background-position: 100% 50%; } 50% { background-position: 50% 100%; } 75% { background-position: 50% 0%; } }
                     @keyframes shimmer-pass { 0% { transform: translateX(-200%) skewX(-12deg); } 100% { transform: translateX(200%) skewX(-12deg); } }

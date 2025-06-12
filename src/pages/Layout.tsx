@@ -1,10 +1,9 @@
-import { Link, Outlet, useLocation } from 'react-router-dom'
-import { Button } from '@/components/ui/button'
+import { Outlet, useLocation } from 'react-router-dom'
 import Header from "@/pages/Header.tsx";
-import { Toaster } from "@/components/ui/sonner.tsx";
-import { PageTransition } from '@/components/PageTransition';
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
+import {Toaster} from "@/components/ui/sonner.tsx";
+import {PageTransition} from '@/components/PageTransition';
+import {useEffect, useRef} from 'react';
+import {gsap} from 'gsap';
 
 export default function Layout() {
     const location = useLocation();

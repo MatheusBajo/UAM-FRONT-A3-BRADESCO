@@ -1,10 +1,9 @@
-import { useState, useRef, useEffect } from "react"
-import { Button } from "@/components/ui/button"
-import { ArrowUpRight, Bank, QrCode, TrendUp } from "@phosphor-icons/react"
-import { Link } from "react-router-dom";
-import { toast } from "sonner";
-import { gsap } from "gsap";
-import { useHoverAnimation } from "@/hooks/useHoverAnimation";
+import {useEffect, useRef, useState} from "react"
+import {Button} from "@/components/ui/button"
+import {ArrowUpRight, Bank, QrCode, TrendUp} from "@phosphor-icons/react"
+import {Link} from "react-router-dom";
+import {gsap} from "gsap";
+import {useHoverAnimation} from "@/hooks/useHoverAnimation";
 
 export default function Home() {
     const [saldo] = useState(12345.67);

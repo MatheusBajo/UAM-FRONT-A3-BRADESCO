@@ -1,6 +1,5 @@
 import { usePageTransition } from '@/hooks/usePageTransition.ts';
-import { ReactNode } from 'react';
-
+import { type ReactNode } from 'react';
 interface PageTransitionProps {
     children: ReactNode;
     className?: string;

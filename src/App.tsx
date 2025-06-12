@@ -10,7 +10,6 @@ import {
     CardHeader,
     CardTitle
 } from "@/components/ui/card.tsx";
-import { Toaster } from "@/components/ui/sonner";
 
 
 function App() {

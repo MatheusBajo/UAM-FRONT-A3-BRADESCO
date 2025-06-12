@@ -15,7 +15,7 @@ export interface PixResponse {
 export interface TransacaoRequest {
     valor: string;              // "100.00"
     chaveDestino: string;
-    tipoChave: 'CPF' | 'EMAIL' | 'TELEFONE' | 'ALEATORIA';
+    tipoChave: 'CPF' | 'EMAIL' | 'TELEFONE' | 'ALEATORIA' | 'CNPJ';
     descricao: string;
     remetenteId: number;
     destinatarioId: number;

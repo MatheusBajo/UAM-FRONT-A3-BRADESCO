@@ -1,12 +1,12 @@
-import { Button } from "@/components/ui/button"
-import { Link, useLocation } from "react-router-dom"
-import React, { useEffect, useRef } from "react";
-import { gsap } from "gsap";
+import {Button} from "@/components/ui/button"
+import {Link, useLocation} from "react-router-dom"
+import React, {useEffect, useRef} from "react";
+import {gsap} from "gsap";
 
 export default React.memo(function Header() {
-    const headerRef = useRef<HTMLHeaderElement>(null);
+    const headerRef = useRef<HTMLElement>(null);
+    const navRef = useRef<HTMLElement>(null);
     const logoRef = useRef<HTMLDivElement>(null);
-    const navRef = useRef<HTMLNavElement>(null);
     const location = useLocation();
 
     useEffect(() => {
