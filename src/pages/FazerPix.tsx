@@ -140,7 +140,9 @@ export default function FazerPix() {
         if (Object.keys(err).length) {
             setErrors(err);
             toast.error(
-                err.mesmoId ? 'Não é possível enviar Pix para si mesmo.' : 'Preencha todos os campos obrigatórios.',
+                err.mesmoId
+                    ? 'Não é possível enviar Pix para si mesmo.'
+                    : 'Preencha todos os campos obrigatórios.',
                 { icon: <X weight="bold" className="text-red-500" /> }
             );
             return;
@@ -157,23 +159,28 @@ export default function FazerPix() {
             dataHora,
         };
 
-        const promise = analisarTransacao(payload).then((data) => {
-            setAnalise(data);
+        // 3) Novo fetch para o webhook:
+        const promise = fetch('https://abraaoia.app.n8n.cloud/webhook/pix-transaction', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+        })
+            .then(res => {
+                if (!res.ok) throw new Error(`Status ${res.status}`);
+                return res.json();
+            })
+            .then((data: AnaliseResponse) => {
+                setAnalise(data);
+                if (data.acao_recomendada === 'BLOQUEAR' || data.acao_recomendada === 'ALERTAR') {
+                    setDrawer(true);
+                }
+                return data;
+            });
 
-            // Trato o drawer de acordo com a recomendação
-            if (data.acao_recomendada === 'BLOQUEAR') {
-                setDrawer(true);
-            } else if (data.acao_recomendada === 'ALERTAR') {
-                setDrawer(true);
-            }
-
-            return data; // precisa retornar algo para chegar no `success`
-        });
-
+        // 4) Continue usando o toast.promise:
         toast.promise(promise, {
-            loading: 'Analisando transação...',
-            success: (data) => {
-                // Aqui você pode customizar a mensagem final
+            loading: 'Enviando Pix...',
+            success: data => {
                 if (data.acao_recomendada === 'BLOQUEAR') {
                     return `Transação bloqueada! (Risco: ${data.pontuacao_risco} %)`;
                 }
@@ -182,10 +189,9 @@ export default function FazerPix() {
                 }
                 return `Pix aprovado! (Risco: ${data.pontuacao_risco} %)`;
             },
-            error: 'Erro ao processar transação',
+            error: err => `Erro ao enviar Pix: ${err.message}`,
         });
     }
-
     return (
         <section className="mx-auto w-full max-w-xl p-4">
             <header className="mb-6 text-center relative overflow-hidden rounded-xl shadow-2xl animate-header-entrance">
